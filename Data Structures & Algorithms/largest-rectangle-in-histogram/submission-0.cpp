@@ -4,20 +4,17 @@ public:
         int maxarea=0;
         for(int i=0;i<heights.size();i++)
         {
-            int height=heights[i];
-            int rightmost=i+1;
-            while(rightmost<heights.size()&&heights[rightmost]>=height)
+            int rightmost=i;
+            while(rightmost<heights.size()&&heights[rightmost]>=heights[i])
             {
                rightmost++;
             }
             int leftmost=i;
-            while(leftmost>=0&&heights[leftmost]>=height)
+            while(leftmost>=0&&heights[leftmost]>=heights[i])
             {
               leftmost--;
             }
-            rightmost--;
-            leftmost++;
-            int area=height*(rightmost-leftmost+1);
+            int area=heights[i]*(rightmost-leftmost-1);
             maxarea=max(maxarea,area);
         
         }
