@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int binsearch(int l,int h,vector<int>& nums, int target)
+    int binsearch(int l,int h,vector<int>& nums, int target)   //using recursion
     {
         if(l>h)
         return -1;
