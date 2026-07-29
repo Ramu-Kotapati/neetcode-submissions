@@ -1,30 +1,37 @@
 class Solution {
 public:
     int largestRectangleArea(vector<int>& heights) {
-        int maxarea=0;
-        stack<pair<int,int>> stk;//(index,height)
-        for(int i=0;i<heights.size();i++)
+        int n=heights.size();
+        vector<int> left(n),right(n);
+        stack<int> stk;
+        for(int i=0;i<n;i++)
         {
-            int start=i;
-            while(!stk.empty()&&stk.top().second>heights[i])
-            {
-                pair<int,int> top=stk.top();
-                int index=top.first;
-                int height=top.second;
-                maxarea=max(maxarea,height*(i-index));
-                start=index;
-                stk.pop();
-            }
-            stk.push({start,heights[i]});
+            while(!stk.empty()&&heights[stk.top()]>=heights[i])
+            stk.pop();
+            left[i]=stk.empty()?-1:stk.top();
+            stk.push(i);
         }
         while(!stk.empty())
         {
-            int index = stk.top().first;
-            int height = stk.top().second;
-            int area=height*(heights.size()-index);
-            maxarea=max(maxarea,area);
             stk.pop();
         }
+        for(int i=n-1;i>=0;i--)
+        {
+            while(!stk.empty()&&heights[stk.top()]>=heights[i])
+            stk.pop();
+            right[i]=stk.empty()? n:stk.top();
+            stk.push(i);
+        }
+        int maxarea=0;
+        for(int i=0;i<n;i++)
+        {
+            int area=heights[i]*(right[i]-left[i]-1);
+            maxarea=max(maxarea,area);
+        }
+
+
         return maxarea;
+
     }
+    
 };
