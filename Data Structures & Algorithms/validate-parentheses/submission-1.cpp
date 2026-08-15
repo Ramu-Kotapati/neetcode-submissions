@@ -5,10 +5,10 @@ public:
         while(true)
         {
             int pos=string::npos;
-            if((pos=s.find("()"))!=string::npos)
-            {
-                s.erase(pos,2);
-                continue;
+            if((pos=s.find("()"))!=string::npos)//note that here find returns position
+            {                                   //because its string::find()
+                s.erase(pos,2);        //for sets and maps it returns an iterator              
+                continue;        
             }
             if ((pos = s.find("{}")) != string::npos) {
                 s.erase(pos, 2);
