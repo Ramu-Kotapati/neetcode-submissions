@@ -11,7 +11,7 @@
 
 class Solution {
 public:
-    void reorderList(ListNode*& head) {
+    void reorderList(ListNode*& head) { //notice the reference operator
         vector<int> arr;
         vector<int>res;
         ListNode *curr=head;
@@ -42,7 +42,8 @@ public:
             curr->next=new ListNode(res[i]);
             curr=curr->next;
         }
-       head=result;
+       head=result; //this is correct in this function only , but outside the original head cannot be changed , so we use reference in function parameter
+                
         
 
 
