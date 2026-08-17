@@ -21,17 +21,11 @@ public:
         }
         if(copy.size() == 1)
         return nullptr;
-        vector<int>res;
+       
         int index=copy.size()-n;
-        for(int i=0;i<copy.size();i++)
-        {
-            if(i==index)
-            continue;
-            res.push_back(copy[i]);
-            
-        }
+        copy.erase(copy.begin() + index);
         curr = head;
-        for (int x : res) {
+        for (int x : copy) {
             curr->val = x;
             curr = curr->next;
         }
