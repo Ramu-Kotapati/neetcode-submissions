@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    TreeNode* invertTree(TreeNode* root) {
+    TreeNode* invertTree(TreeNode* root) {   //using BFS(queue)
         queue<TreeNode*> queue;
         if(root==nullptr)
         {
