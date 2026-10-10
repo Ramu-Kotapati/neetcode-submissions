@@ -13,7 +13,7 @@
 class Solution {
 public:
     int kthSmallest(TreeNode* root, int k) {
-        if(!root)return 0;
+        if(!root)return -1;
         vector<int>res;
         dfs_preorder(root,res);
         return res[k-1];
